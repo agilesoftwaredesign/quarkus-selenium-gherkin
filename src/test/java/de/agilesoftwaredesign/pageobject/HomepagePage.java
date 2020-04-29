@@ -4,6 +4,7 @@ import java.net.URL;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class HomepagePage {
     protected WebDriver driver;
@@ -14,6 +15,9 @@ public class HomepagePage {
     }
 
     protected FormPage openForms() {
+        WebElement elm =
+                driver.findElement(By.cssSelector(".content > nav:nth-child(2) > p:nth-child(4) > a:nth-child(1)"));
+        elm.click();
         return new FormPage(driver);
     }
 

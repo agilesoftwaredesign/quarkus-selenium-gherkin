@@ -36,14 +36,13 @@ public class FormSeleniumTest {
     protected HomepagePage homepagePage;
 
     @BeforeEach
-    public void ensureWebDriver() {
+    public void beforeEach() {
         if (driver != null) {
             return;
         }
 
         if ("chrome".equalsIgnoreCase(usewebdriver)) {
             LOG.info("creating ChromeDriver");
-            LOG.info("--> " + System.getProperty("webdriver.chrome.driver"));
             driver = new ChromeDriver();
 
         } else if (usewebdriver.startsWith("remote")) {
@@ -65,7 +64,7 @@ public class FormSeleniumTest {
         homepagePage = new HomepagePage(driver, toUrl(homepageBaseUrl));
     }
 
-    private static URL toUrl(String url) {
+    public static URL toUrl(String url) {
         try {
             return new URL(url);
         } catch (MalformedURLException e) {
@@ -75,10 +74,11 @@ public class FormSeleniumTest {
     }
 
     @AfterEach
-    public void afterAll() {
+    public void afterEach() {
         LOG.info("closing WebDriver session");
         if (driver != null) {
             driver.quit();
+            driver = null;
         }
     }
 
@@ -91,7 +91,7 @@ public class FormSeleniumTest {
     @Test
     public void verifyFormEntryCalculationWorksProper() {
         String result = homepagePage.enterValueIntoForm("support phone", "+49 89 55555");
-        Assertions.assertEquals("ccc", result);
+        Assertions.assertEquals("{\"hi\":\"welcome\",\"one\":\"support phone\",\"two\":\"no-two\"}", result);
     }
 
     @Test
@@ -102,6 +102,5 @@ public class FormSeleniumTest {
         searchBox.sendKeys("ChromeDriver");
         searchBox.submit();
         Thread.sleep(5000); // Let the user actually see something!
-        driver.quit();
     }
 }
