@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Quarkus Selenium Gherkin</title>
+<link rel="stylesheet" href="styles/common.css">
+</head>
+<body>
+	<div class="content">
+		<header>
+			<h1>Quarkus Selenium Gherkin</h1>
+		</header>
+		<nav>
+			<p>
+				<a href="index.html">Home</a>
+			</p>
+			<hr>
+			<p>
+				<a href="#detail-page" class="navigation">View Details</a>
+			</p>
+			<p>
+				<a href="#forms-page" class="navigation">View Form</a>
+			</p>
+			<p>
+				<a href="separate.html" class="navigation-page">Separate page</a>
+			</p>
+			<hr>
+		</nav>
+		<main>
+			<h2>Let's explore</h2>
+			<p>A very warm welcome to the our learning platform.</p>
+		</main>
+		<footer>Free for education</footer>
+	</div>
+
+	<template id="detail-template">
+	<h2>Details</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Customer</th>
+				<th>Created</th>
+				<th>Parts</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Cust01</td>
+				<td>2002-01-01</td>
+				<td>p0,p3,p45</td>
+				<td><button type=button>Click me</button>
+			</tr>
+			<tr>
+				<td>Cust02: ACME</td>
+				<td>2012-01-01</td>
+				<td>p-1,p3,p45</td>
+				<td><button type=button>Click me</button>
+			</tr>
+		</tbody>
+	</table>
+	</template>
+
+	<template id="forms-template">
+	<h2>Forms</h2>
+	<form>
+		<label for="inp-one">One:</label><input type="text" class="nameentry" name="inp-one">
+		<label for="inp-tel">Telephone:</label><input type="tel" class="phoneentry" name="inp-tel">
+		<button type="button">submit</button>
+	</form>
+
+	</template>
+
+	<script src="scripts/common.js"></script>
+</body>
+</html>
